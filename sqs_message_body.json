@@ -1,0 +1,264 @@
+{
+    "address": {
+      "city": "Los Angeles",
+      "country": "US",
+      "state": "California"
+    },
+    "advanceNotice": {
+      "custom": 0,
+      "home": 0,
+      "poi": 0
+    },
+    "bookableLocations": [
+      {
+        "type": "point",
+        "advanceNoticeHours": 1,
+        "zoneId":"America/Los_Angeles",
+        "point": {
+          "lat": 34.1345954,
+          "lng": -116.4569232
+        },
+        "businessHours": {
+          "friday": [{
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }],
+          "monday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "saturday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "sunday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "thursday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "tuesday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "wednesday": [
+              {
+              "start": "00:00:00",
+              "end": "01:00:00"
+          }
+          ]
+        },
+        "fee": {
+          "amount": 1,
+          "currency": "USD"
+        },
+        "instantBook": true,
+        "unavailabilities": [
+          {"start": "2022-11-12T12:00:00", "end": "2022-11-13T12:00:00"}
+      ]
+      }
+    ],
+    "bookings": [],
+    "categories": [],
+    "created": [
+      2022,
+      5,
+      17,
+      14,
+      20,
+      15,
+      106000000
+    ],
+    "dailyMileage": null,
+    "delivery": null,
+    "engine": "COMBUSTION",
+    "features": [],
+    "location": {
+      "lat": 0,
+      "lng": 0
+    },
+    "host": {
+      "businessHours": {
+        "friday": [{
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }],
+          "monday": [
+              {
+              "start": "00:00:00",
+              "end": "01:00:00"
+          }
+          ],
+          "saturday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "sunday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "thursday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "tuesday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "wednesday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ]
+        },
+      "id": "1",
+      "isAllStar": false,
+      "remoteUnlockBusinessHours": {
+        "friday": [{
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }],
+          "monday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "saturday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "sunday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "thursday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "tuesday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ],
+          "wednesday": [
+              {
+              "start": "00:00:00",
+              "end": "23:00:00"
+          }
+          ]
+        },
+      "reviewCount": 1,
+      "unavailabilities": [
+      ]
+    },
+    "id": "1100",
+    "image": "image",
+    "images": [
+      "vehicle/images/N65p15mQT86bjE3fJpAFFA.jpg",
+      "vehicle/images/N65p15mQT86bjE3fJpAFFA.jpg"
+    ],
+    "instantBookLocationType": [],
+    "isRemoteUnlock": false,
+    "make": "make",
+    "metrics": {
+      "rating": null,
+      "reviewCount": 0,
+      "tripCount": 0
+    },
+    "minimumAgeToRent": 21,
+    "model": "model",
+    "pricing": {
+      "boosts": {
+        "sameDayFraction": 0
+      },
+      "dailyBase": {
+        "amount": 1,
+        "currency": "USD"
+      },
+      "dailyDeltas": {},
+      "discounts": {
+        "sevenDayEarlyBirdFraction": 0,
+        "sevenDayFraction": 0,
+        "thirtyDayFraction": 0,
+        "threeDayFraction": 0
+      }
+    },
+    "promotions": [],
+    "searchV9Attributes": {
+      "approvalProbability": 0,
+      "categoryAggregateId": 1,
+      "referencePrice": {
+        "amount": 1,
+        "currency": "USD"
+      },
+      "tmv": {
+        "amount": 1,
+        "currency": "USD"
+      },
+      "vehicleDescriptionLength": 50,
+      "vehicleId": "1"
+    },
+    "searchV10Attributes": {
+      "fulfillmentRate": 1,
+      "hostLoginCount": 250,
+      "instantBook": false,
+      "numImages": 10,
+      "cancellationRate": 0.005,
+      "declinedExpiredRate":0.0,
+      "avgHostRating": 4.5,
+      "avgResponseTime": 1200,
+      "numRequests":100,
+      "referencePrice": 1000,
+      "tmv": 1000,
+      "categoryAggregateId": 1,
+      "vehicleDescriptionLength": 50,
+      "vehicleId": "1"
+    },
+    "seats": 6,
+    "tmvTier": "STANDARD",
+    "transmission": "MANUAL",
+    "tripDuration": {
+      "max": null,
+      "min": null,
+      "minWeekend": null
+    },
+    "type": "MINIVAN",
+    "unavailabilities": [
+        {"start": "2022-10-09T12:00:00", "end": "2022-10-10T12:00:00"}
+    ],
+    "year": 2000,
+    "zoneId": "America/Los_Angeles",
+    "tmv": {
+        "amount": 1,
+        "currency": "USD"
+      }
+  }
