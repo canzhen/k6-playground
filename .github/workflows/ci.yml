@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Print out environment
+      env: 
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        TEST_AWS_SQS_QUEUE: ${{ secrets.TEST_AWS_SQS_QUEUE }}
+      run: |
+        echo $AWS_REGION \ 
+        echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \ 
+        echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \ 
+        echo "TEST_AWS_SQS_QUEUE=$TEST_AWS_SQS_QUEUE"
+
+    - name: Run k6 test for dunlop-search-api
+      uses: grafana/k6-action@v0.3.1
+      with:
+          filename: dunlop-search-api.js
+          flags: --vus 1 --duration 1s
