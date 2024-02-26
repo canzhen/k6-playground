@@ -10,7 +10,7 @@ const awsConfig = new AWSConfig({
 })
 
 const sqs = new SQSClient(awsConfig)
-const testQueue = 'https://sqs.us-east-1.amazonaws.com/445973224478/k6-test'
+const testQueue = 'https://sqs.us-east-1.amazonaws.com/749143309851/k6-test'
 
 export default async function () {
     // If our test queue does not exist, abort the execution.
