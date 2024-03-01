@@ -4,66 +4,33 @@ export default function() {
   const url = 'http://vehicle-search-api.sbx-1278.svc.cluster.local/api/v2/search';
   const data = {
     "filters": {
-      "engines": [
-        "COMBUSTION",
-      ],
-      "features": [
-        "SKI_RACK"
-      ],
       "location": {
-        "type": "point",
+        "type": "poi",
+        "locationId": "7891112", 
         "country": "US",
-        "point": {
-          "lat": 37.77,
-          "lng": 122.41,
-        },
-        "locationId": "123",
-        "pickupType": "PICKUP_AT",
+        "pickupType": "ALL",
       },
-      "makes": [
-        "tesla",
-      ],
-      "models": [
-        "modelY"
-      ],
-      "dailyPrice": {
-        "valid": true,
-        "min": {
-          "amount": "50",
-          "currency": "USD"
-        },
-        "max": {
-          "amount": 120,
-          "currency": "USD"
-        }
-      },
+      "engines": [],
+      "features": [],
+      "makes": [],
+      "models": [],
+      "dailyPrice": {},
       "dates": {
-        "start": "2024-04-11T10:00:00.000Z",
-        "end": "2024-04-14T10:00:00.000Z",
-        "valid": true,
+        "start": "2024-05-01T10:00",
+        "end": "2024-05-07T10:00",
       },
-      "isAllStarHost": true,
-      "isInstantBook": true,
-      "isRemoteUnlock": true,
-      "minSeats": 4,
-      "transmission": "AUTOMATIC",
-      "years": {
-        "valid": true,
-        "min": 2014,
-        "max": 2024,
-      }
-    },
-    "searchContext": {
-      "searchId": "search_id_k6",
-      "deviceId": "device_id_k6",
-      "deviceType": "device_type_k6",
-      "deviceModel": "device_model_k6",
-      "sessionId": "session_id_k6",
-      "trackingId": "tracking_id_k6",
+      "isAllStarHost": false,
+      "isInstantBook": false,
+      "isRemoteUnlock": false,
+      "minSeats": 0,
+      "years": {},
     },
     "sorts": {
       "direction": "DESC",
-      "type": "PRICE"
+      "type": "RELEVANCE"
+    },
+    "searchContext": {
+      "searchId": "",
     },
   };
   const params = {
@@ -75,7 +42,7 @@ export default function() {
   };
   // send a post request and save response as a variable
   const res = http.post(url, JSON.stringify(data), params);
-  console.log('\n-------------------- length of returned vehicles: ' + res.json().vehicles.length + ' --------------------\n');
+  console.log('returned vehicles: ' + res.json().vehicles + '.\n');
 }
 
 export const options = {
