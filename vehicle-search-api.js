@@ -1,38 +1,14 @@
 import http from 'k6/http';
+import { SharedArray } from 'k6/data';
+
+const requests = new SharedArray('requests', function () {
+  // here you can open files, and then do additional processing or generate the array with data dynamically
+  const requests = JSON.parse(open('./search_requests.json'));
+  return requests; // f must be an array[]
+});
 
 export default function() {
   const url = 'http://vehicle-search-api.sbx-1278.svc.cluster.local/api/v2/search';
-  const data = {
-    "filters": {
-      "location": {
-        "type": "poi",
-        "locationId": "7891112", 
-        "country": "US",
-        "pickupType": "ALL",
-      },
-      "engines": [],
-      "features": [],
-      "makes": [],
-      "models": [],
-      "dailyPrice": {},
-      "dates": {
-        "start": "2024-05-01T10:00",
-        "end": "2024-05-07T10:00",
-      },
-      "isAllStarHost": false,
-      "isInstantBook": false,
-      "isRemoteUnlock": false,
-      "minSeats": 0,
-      "years": {},
-    },
-    "sorts": {
-      "direction": "DESC",
-      "type": "RELEVANCE"
-    },
-    "searchContext": {
-      "searchId": "",
-    },
-  };
   const params = {
     headers: {
       'content-type': 'application/json',
@@ -40,9 +16,12 @@ export default function() {
       'user-agent': 'jojok6',
     },
   };
-  // send a post request and save response as a variable
-  const res = http.post(url, JSON.stringify(data), params);
-  console.log('returned vehicles: ' + res.json().vehicles + '.\n');
+  for (let i = 0; i < requests.length; i++) {
+    const request = requests[i];
+      // send a post request and save response as a variable
+    const res = http.post(url, JSON.stringify(request), params);
+    console.log('returned vehicles: ' + res.json().vehicles + '.\n');
+  }
 }
 
 export const options = {

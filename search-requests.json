@@ -1,0 +1,32 @@
+[
+    {
+        "filters": {
+          "location": {
+            "type": "poi",
+            "country": "US",
+            "pickupType": "ALL"
+          },
+          "engines": [],
+          "features": [],
+          "makes": [],
+          "models": [],
+          "dailyPrice": {},
+          "dates": {
+            "start": "2024-05-01T10:00",
+            "end": "2024-05-07T10:00"
+          },
+          "isAllStarHost": false,
+          "isInstantBook": false,
+          "isRemoteUnlock": false,
+          "minSeats": 0,
+          "years": {}
+        },
+        "sorts": {
+          "direction": "DESC",
+          "type": "RELEVANCE"
+        },
+        "searchContext": {
+          "searchId": ""
+        }
+      }
+]
