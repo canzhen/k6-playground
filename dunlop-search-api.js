@@ -1,14 +1,15 @@
 import http from 'k6/http';
 import { SharedArray } from 'k6/data';
 
-const url = 'https://turo.xyz/api/v2/search';
+// load test config, used to populate exported options object:
+const testConfig = JSON.parse(open('./options.json'));
+
 
 const params = {
   headers: {
-    'content-type': 'application/json',
-    'referer': 'https://turo.xyz',
-    // 'user-agent': 'jojok6',
-    'user-agent': 'Turo/22.44.1 (iPhone; iOS 15.0; Scale/2.00)',
+    'content-type': testConfig.dunlop_search.content_type,
+    'referer': testConfig.dunlop_search.xyz.referer,
+    'user-agent': testConfig.user_agent,
   },
 };
 
@@ -23,7 +24,7 @@ export default function() {
   for (let i = 0; i < requests.length; i++) {
     const request = requests[i];
       // send a post request and save response as a variable
-    const res = http.post(url, JSON.stringify(request), params);
+    const res = http.post(testConfig.dunlop_search.xyz.url, JSON.stringify(request), params);
     console.log('\n-------------------- length of returned vehicles: ' + res.json().vehicles.length + ' --------------------\n');
   }
 }

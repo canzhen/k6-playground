@@ -1,6 +1,11 @@
 import http from 'k6/http';
 import { SharedArray } from 'k6/data';
 
+
+// load test config, used to populate exported options object:
+const testConfig = JSON.parse(open('./options.json'));
+
+
 const requests = new SharedArray('requests', function () {
   // here you can open files, and then do additional processing or generate the array with data dynamically
   const requests = JSON.parse(open('./search_requests.json'));
@@ -8,18 +13,17 @@ const requests = new SharedArray('requests', function () {
 });
 
 export default function() {
-  const url = 'http://vehicle-search-api.sbx-1278.svc.cluster.local/api/v2/search';
   const params = {
     headers: {
-      'content-type': 'application/json',
-      'referer': 'http://vehicle-search-api.sbx-1278.svc.cluster.local',
-      'user-agent': 'jojok6',
+      'content-type':testConfig.vehicle_search.content_type,
+      'referer': testConfig.vehicle_search.sandbox.referer,
+      'user-agent': testConfig.user_agent,
     },
   };
   for (let i = 0; i < requests.length; i++) {
     const request = requests[i];
       // send a post request and save response as a variable
-    const res = http.post(url, JSON.stringify(request), params);
+    const res = http.post(testConfig.vehicle_search.sandbox.url, JSON.stringify(request), params);
     console.log('returned vehicles: ' + res.json().vehicles + '.\n');
   }
 }
