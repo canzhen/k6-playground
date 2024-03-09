@@ -1,42 +1,31 @@
 import http from 'k6/http';
+import { SharedArray } from 'k6/data';
+
+const url = 'https://turo.xyz/api/v2/search';
+
+const params = {
+  headers: {
+    'content-type': 'application/json',
+    'referer': 'https://turo.xyz',
+    // 'user-agent': 'jojok6',
+    'user-agent': 'Turo/22.44.1 (iPhone; iOS 15.0; Scale/2.00)',
+  },
+};
+
+const requests = new SharedArray('requests', function () {
+  // here you can open files, and then do additional processing or generate the array with data dynamically
+  const requests = JSON.parse(open('./dunlop-search-requests.json'));
+  return requests; // f must be an array[]
+});
+
 
 export default function() {
-  const url = 'https://turo.xyz/api/v2/search';
-  const data = {
-    "filters": {
-        "location": {
-            "country": "US",
-            "type": "poi",
-            "locationId": 31940,
-            "pickupType": "ALL"
-        },
-        "engines": [],
-        "makes": [],
-        "models": [],
-        "dates": {
-            "end": "2024-04-14T10:00",
-            "start": "2024-04-11T10:00"
-        },
-        "tmvTiers": [],
-        "features": [],
-        "types": []
-    },
-    "sorts": {
-        "direction": "ASC",
-        "type": "RELEVANCE"
-    }
-  };
-  const params = {
-    headers: {
-      'content-type': 'application/json',
-      'referer': 'https://turo.xyz',
-      // 'user-agent': 'jojok6',
-      'user-agent': 'Turo/22.44.1 (iPhone; iOS 15.0; Scale/2.00)',
-    },
-  };
-  // send a post request and save response as a variable
-  const res = http.post(url, JSON.stringify(data), params);
-  console.log('\n-------------------- length of returned vehicles: ' + res.json().vehicles.length + ' --------------------\n');
+  for (let i = 0; i < requests.length; i++) {
+    const request = requests[i];
+      // send a post request and save response as a variable
+    const res = http.post(url, JSON.stringify(request), params);
+    console.log('\n-------------------- length of returned vehicles: ' + res.json().vehicles.length + ' --------------------\n');
+  }
 }
 
 export const options = {
