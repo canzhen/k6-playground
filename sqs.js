@@ -1,5 +1,5 @@
 import http from 'k6/http';
-const queueURL = 'https://sqs.us-east-1.amazonaws.com/749143309851/k6-test'
+const queueURL = 'https://sqs.us-east-1.amazonaws.com/749143309851/sbx-k6-test'
 
 
 export default async function () {
