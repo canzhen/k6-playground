@@ -1,18 +1,28 @@
 import http from 'k6/http';
 const queueURL = 'https://sqs.us-east-1.amazonaws.com/749143309851/k6-test'
 
-export const options = {
-    vus: 1,
-  };
 
 export default async function () {
-    let res;
+    const params = {
+        headers: {
+            'Host': 'sqs.us-east-1.amazonaws.com',
+            'X-Amz-Target': 'AmazonSQS.SendMessage',
+            'Content-Type': 'application/x-amz-json-1.0',
+        },
+    };
+
+    const payload = {
+        "QueueUrl": queueURL,
+        "MessageBody": "this is a test",
+    };
+
+    let res;    
     try {
-        res = await http.get('https://sts.amazonaws.com?Version=2011-06-15&Action=AssumeRoleWithWebIdentity&RoleArn=arn:aws:iam::749143309851:role/load-testing-testkube&DurationSeconds=3600&RoleSessionName=k6-load-testing-session');
+        res = await http.post(queueURL, JSON.stringify(payload), params)
     } catch (e) {
-        console.error(e);
+        console.log(e);
     }
-    console.log(res.body);
+    console.log(res);
 }
 
 
