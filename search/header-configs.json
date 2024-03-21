@@ -1,0 +1,19 @@
+{
+  "vehicle_search": {
+    "sandbox": {
+      "url": "http://vehicle-search-api.sbx-1278.svc.cluster.local/api/v2/search",
+      "referer": "http://vehicle-search-api.sbx-1278.svc.cluster.local"
+    },
+    "content_type": "application/json"
+  },
+
+  "dunlop_search": {
+    "xyz": {
+      "url": "https://turo.xyz/api/v2/search",
+      "referer": "https://turo.xyz"
+    },
+    "content_type": "application/json"
+  },
+
+  "user_agent": "Turo/22.44.1 (iPhone; iOS 15.0; Scale/2.00)"
+}
